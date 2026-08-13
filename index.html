@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gesture Guitar — play guitar with your hands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<header class="hero">
+  <p class="eyebrow">E — A — D — G — B — E</p>
+  <h1>Gesture&nbsp;Guitar</h1>
+  <p class="tagline">Fret with your left hand. Strum with your right. No guitar required — just a camera.</p>
+</header>
+
+<main class="layout">
+
+  <section class="stage-wrap">
+    <video id="webcam" playsinline autoplay muted style="display:none"></video>
+    <canvas id="stage" width="960" height="720"></canvas>
+    <button id="startBtn" class="start-btn">▶ Start Camera &amp; Sound</button>
+    <p id="status" class="status">Grant camera access to begin. Everything runs locally in your browser — nothing is uploaded.</p>
+  </section>
+
+  <aside class="panel">
+
+    <div class="panel-section">
+      <h2><span class="tab-label">01</span> How to play</h2>
+      <ul class="howto">
+        <li><b>Left hand</b> — hold up fingers: 0=Em&nbsp;1=Am&nbsp;2=C&nbsp;3=D&nbsp;4=G&nbsp;5=F</li>
+        <li><b>Right hand</b> — sweep your index finger through the glowing string zone to strum</li>
+        <li><b>Fast sweep</b> = full strum · <b>slow tap</b> = single-string pluck</li>
+      </ul>
+    </div>
+
+    <div class="panel-section">
+      <h2><span class="tab-label">02</span> Record</h2>
+      <button id="recordBtn" class="control-btn">● Record</button>
+      <a id="downloadLink" class="download-link" hidden>⬇ Download</a>
+    </div>
+
+    <div class="panel-section">
+      <h2><span class="tab-label">03</span> Song-Guide mode</h2>
+      <label class="field-label" for="songSelect">Pick a preset song</label>
+      <select id="songSelect">
+        <option value="">— Choose a song —</option>
+        <option value="darkhaast">Darkhaast (Shivaay)</option>
+        <option value="phir_kabhi">Phir Kabhi (M.S. Dhoni)</option>
+        <option value="jab_tak">Jab Tak (M.S. Dhoni)</option>
+      </select>
+
+      <p class="or-divider">— or guide any song of your own —</p>
+      <label class="field-label" for="customSheet">Paste a chord sheet</label>
+      <textarea id="customSheet" rows="7" placeholder="Title: My Song
+BPM: 100
+Intro: G Em C D
+Verse: G Em C D x2
+Chorus: C Am F G x2"></textarea>
+      <button id="loadCustomBtn" class="control-btn secondary">Load this song</button>
+      <button id="exitSongBtn" class="control-btn ghost" hidden>Exit Song-Guide</button>
+    </div>
+
+  </aside>
+</main>
+
+<footer class="foot-tab">
+  <span>|—3—2—0—1—0—|</span> gesture guitar · runs entirely in your browser
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/tone@14.8.49/build/Tone.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
